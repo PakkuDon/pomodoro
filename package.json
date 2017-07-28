@@ -1,0 +1,7 @@
+{
+  "name": "pomodoro",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "PakkuDon <pakku.pd@gmail.com>",
+  "license": "MIT"
+}
