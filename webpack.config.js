@@ -7,6 +7,11 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/assets/'
   },
+  resolve: {
+    alias: {
+      normalize: "normalize.css/normalize.css"
+    }
+  },
   module: {
     rules: [
       {
