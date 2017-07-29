@@ -4,6 +4,11 @@
   "main": "index.js",
   "author": "PakkuDon <pakku.pd@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "build": "npm run copy && webpack",
+    "start:dev": "npm run copy && webpack --watch",
+    "copy": "cp index.html dist/"
+  },
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
