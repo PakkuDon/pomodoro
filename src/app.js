@@ -1,17 +1,20 @@
 import 'normalize'
 import './styles.css'
 
+import Timer from './timer'
+
 const timerDisplay = document.querySelector('.timer')
 const timerProgress = document.querySelector('progress')
 
-let initialDuration = 25 * 60 * 1000
-let timeRemaining = initialDuration
+const initialDuration = 1
+Timer.start(initialDuration)
 
 let animationID = setInterval(() => {
-  timeRemaining -= 1000
+  Timer.tick()
+  const timeRemaining = Timer.getTimeRemaing();
+  const timeDuration = Timer.getDuration()
 
-  if (timeRemaining < 0) {
-    timeRemaining = 0
+  if (timeRemaining <= 0) {
     clearInterval(animationID)
   }
 
@@ -20,6 +23,6 @@ let animationID = setInterval(() => {
   const remainingTimeFormatted = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
 
   timerDisplay.textContent = remainingTimeFormatted
-  timerProgress.max = initialDuration
-  timerProgress.value = initialDuration - timeRemaining
+  timerProgress.max = timeDuration
+  timerProgress.value = timeDuration - timeRemaining
 }, 1000)
