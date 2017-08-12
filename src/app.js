@@ -6,23 +6,33 @@ import Timer from './timer'
 const timerDisplay = document.querySelector('.timer')
 const timerProgress = document.querySelector('progress')
 
+const workDurationInput = document.querySelector('#work-duration')
+const startButton = document.querySelector('.actions button')
+
 const initialDuration = 1
-Timer.start(initialDuration)
+let animationID
 
-let animationID = setInterval(() => {
-  Timer.tick()
-  const timeRemaining = Timer.getTimeRemaing();
-  const timeDuration = Timer.getDuration()
+startButton.addEventListener('click', () => {
+  clearInterval(animationID)
 
-  if (timeRemaining <= 0) {
-    clearInterval(animationID)
-  }
+  let workDuration = parseInt(workDurationInput.value)
+  Timer.start(workDuration)
 
-  const minutes = Math.floor(timeRemaining / (60 * 1000))
-  const seconds = (timeRemaining / 1000) % 60
-  const remainingTimeFormatted = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
+  animationID = setInterval(() => {
+    Timer.tick()
+    const timeRemaining = Timer.getTimeRemaing();
+    const timeDuration = Timer.getDuration()
 
-  timerDisplay.textContent = remainingTimeFormatted
-  timerProgress.max = timeDuration
-  timerProgress.value = timeDuration - timeRemaining
-}, 1000)
+    if (timeRemaining <= 0) {
+      clearInterval(animationID)
+    }
+
+    const minutes = Math.floor(timeRemaining / (60 * 1000))
+    const seconds = (timeRemaining / 1000) % 60
+    const remainingTimeFormatted = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
+
+    timerDisplay.textContent = remainingTimeFormatted
+    timerProgress.max = timeDuration
+    timerProgress.value = timeDuration - timeRemaining
+  }, 1000)
+})
