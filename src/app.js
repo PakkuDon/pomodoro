@@ -26,7 +26,7 @@ startButton.addEventListener('click', () => {
     const timeDuration = Timer.getDuration()
 
     const minutes = Math.floor(timeRemaining / (60 * 1000))
-    const seconds = (timeRemaining / 1000) % 60
+    const seconds = Math.round((timeRemaining / 1000) % 60)
     const remainingTimeFormatted = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
 
     timerDisplay.textContent = remainingTimeFormatted
