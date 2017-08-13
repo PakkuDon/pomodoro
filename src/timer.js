@@ -1,24 +1,28 @@
-let duration = 0
+let durations = []
+let currentDurationIndex = 0
 let timeRemaining = 0
 let lastTick = Date.now()
 
 export default {
-  start(durationMinutes) {
+  start(workDurtionMinutes, breakDurationMinutes) {
     lastTick = Date.now()
-    duration = durationMinutes * 60 * 1000
-    timeRemaining = duration
+    durations.push(workDurtionMinutes * 60 * 1000)
+    durations.push(breakDurationMinutes * 60 * 1000)
+    currentDurationIndex = 0
+    timeRemaining = durations[currentDurationIndex]
   },
   tick() {
     let newTick = Date.now()
     timeRemaining -= newTick - lastTick
-    if (timeRemaining < 0) {
-      timeRemaining = 0
+    if (timeRemaining <= 0) {
+      currentDurationIndex = (currentDurationIndex + 1) % durations.length
+      timeRemaining = durations[currentDurationIndex]
     }
 
     lastTick = newTick
   },
   getDuration() {
-    return duration
+    return durations[currentDurationIndex]
   },
   getTimeRemaing() {
     return timeRemaining
