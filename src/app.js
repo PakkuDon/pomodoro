@@ -10,7 +10,6 @@ const workDurationInput = document.querySelector('#work-duration')
 const breakDurationInput = document.querySelector('#break-duration')
 const startButton = document.querySelector('.actions button')
 
-const initialDuration = 1
 let animationID
 
 startButton.addEventListener('click', () => {

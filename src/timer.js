@@ -5,10 +5,12 @@ let lastTick = Date.now()
 
 export default {
   start(workDurtionMinutes, breakDurationMinutes) {
+    durations = []
+    currentDurationIndex = 0
+
     lastTick = Date.now()
     durations.push(workDurtionMinutes * 60 * 1000)
     durations.push(breakDurationMinutes * 60 * 1000)
-    currentDurationIndex = 0
     timeRemaining = durations[currentDurationIndex]
   },
   tick() {
