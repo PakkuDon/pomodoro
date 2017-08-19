@@ -9,22 +9,32 @@ export default {
     currentDurationIndex = 0
 
     lastTick = Date.now()
-    durations.push(workDurtionMinutes * 60 * 1000)
-    durations.push(breakDurationMinutes * 60 * 1000)
-    timeRemaining = durations[currentDurationIndex]
+    durations.push({
+      name: 'Work',
+      length: workDurtionMinutes * 60 * 1000,
+    })
+    durations.push({
+      name: 'Break',
+      length: breakDurationMinutes * 60 * 1000,
+    })
+
+    timeRemaining = this.getDuration()
   },
   tick() {
     let newTick = Date.now()
     timeRemaining -= newTick - lastTick
     if (timeRemaining <= 0) {
       currentDurationIndex = (currentDurationIndex + 1) % durations.length
-      timeRemaining = durations[currentDurationIndex]
+      timeRemaining = this.getDuration()
     }
 
     lastTick = newTick
   },
+  getCurrentIntervalName() {
+    return durations[currentDurationIndex].name
+  },
   getDuration() {
-    return durations[currentDurationIndex]
+    return durations[currentDurationIndex].length
   },
   getTimeRemaing() {
     return timeRemaining

@@ -8,6 +8,7 @@ const timerProgress = document.querySelector('progress')
 
 const workDurationInput = document.querySelector('#work-duration')
 const breakDurationInput = document.querySelector('#break-duration')
+const intervalNameElem = document.querySelector('.interval-name')
 const startButton = document.querySelector('.actions button')
 
 let animationID
@@ -19,10 +20,12 @@ startButton.addEventListener('click', () => {
   let breakDuration = getBreakDuration()
   Timer.start(workDuration, breakDuration)
   displayTimeRemaining(Timer.getTimeRemaing(), Timer.getDuration())
+  displayIntervalName(Timer.getCurrentIntervalName())
 
   animationID = setInterval(() => {
     Timer.tick()
     displayTimeRemaining(Timer.getTimeRemaing(), Timer.getDuration())
+    displayIntervalName(Timer.getCurrentIntervalName())
   }, 1000)
 })
 
@@ -37,4 +40,8 @@ const displayTimeRemaining = (timeRemaining, duration) => {
   timerDisplay.textContent = remainingTimeFormatted
   timerProgress.max = duration
   timerProgress.value = duration - timeRemaining
+}
+
+const displayIntervalName = (name) => {
+  intervalNameElem.textContent = name
 }
