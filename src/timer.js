@@ -2,6 +2,7 @@ let durations = []
 let currentDurationIndex = 0
 let timeRemaining = 0
 let lastTick = Date.now()
+let eventHandlers = {}
 
 export default {
   start(workDurtionMinutes, breakDurationMinutes) {
@@ -38,5 +39,15 @@ export default {
   },
   getTimeRemaing() {
     return timeRemaining
-  }
+  },
+  addEventListener(type, listener) {
+    if (!eventHandlers[type]) {
+      eventHandlers[type] = []
+    }
+    eventHandlers[type].push(listener)
+  },
+  dispatchEvent(type, event) {
+    if (!eventHandlers[type]) return
+    eventHandlers[type].forEach((handler) => { handler(event) })
+  },
 }
