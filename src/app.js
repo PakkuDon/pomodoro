@@ -9,12 +9,18 @@ const timerProgress = document.querySelector('progress')
 const workDurationInput = document.querySelector('#work-duration')
 const breakDurationInput = document.querySelector('#break-duration')
 const intervalNameElem = document.querySelector('.interval-name')
-const startButton = document.querySelector('.actions button')
+const startButton = document.querySelector('#start-button')
+const stopButton = document.querySelector('#stop-button')
 
 let animationID
 
+stopButton.style.display = 'none'
+
 startButton.addEventListener('click', () => {
   clearInterval(animationID)
+
+  startButton.style.display = 'none'
+  stopButton.style.display = 'inline-block'
 
   let workDuration = getWorkDuration()
   let breakDuration = getBreakDuration()
@@ -27,6 +33,13 @@ startButton.addEventListener('click', () => {
     displayTimeRemaining(Timer.getTimeRemaing(), Timer.getDuration())
     displayIntervalName(Timer.getCurrentIntervalName())
   }, 1000)
+})
+
+stopButton.addEventListener('click', () => {
+  clearInterval(animationID)
+  
+  startButton.style.display = 'inline-block'
+  stopButton.style.display = 'none'
 })
 
 const getWorkDuration = () => parseInt(workDurationInput.value)
