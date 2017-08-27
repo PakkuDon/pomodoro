@@ -1,8 +1,18 @@
+const ACCEPTED_EVENTS = [
+  'tick',
+  'interval-start',
+  'interval-end',
+]
+
 let durations = []
 let currentDurationIndex = 0
 let timeRemaining = 0
 let lastTick = Date.now()
 let eventHandlers = {}
+
+ACCEPTED_EVENTS.forEach(eventType => {
+  eventHandlers[eventType] = []
+})
 
 export default {
   start(workDurtionMinutes, breakDurationMinutes) {
@@ -41,9 +51,7 @@ export default {
     return timeRemaining
   },
   addEventListener(type, listener) {
-    if (!eventHandlers[type]) {
-      eventHandlers[type] = []
-    }
+    if (!eventHandlers[type]) return
     eventHandlers[type].push(listener)
   },
   dispatchEvent(type, event) {
