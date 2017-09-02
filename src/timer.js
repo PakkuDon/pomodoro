@@ -23,10 +23,12 @@ export default {
     durations.push({
       name: 'Work',
       length: workDurtionMinutes * 60 * 1000,
+      count: 0,
     })
     durations.push({
       name: 'Break',
       length: breakDurationMinutes * 60 * 1000,
+      count: 0,
     })
 
     timeRemaining = this.getDuration()
@@ -35,6 +37,7 @@ export default {
     let newTick = Date.now()
     timeRemaining -= newTick - lastTick
     if (timeRemaining <= 0) {
+      durations[currentDurationIndex].count++
       currentDurationIndex = (currentDurationIndex + 1) % durations.length
       timeRemaining = this.getDuration()
 
