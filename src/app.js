@@ -11,6 +11,7 @@ const breakDurationInput = document.querySelector('#break-duration')
 const intervalNameElem = document.querySelector('.interval-name')
 const startButton = document.querySelector('#start-button')
 const stopButton = document.querySelector('#stop-button')
+const chimeSound = document.querySelector('audio')
 
 let animationID
 
@@ -67,4 +68,7 @@ Timer.addEventListener('interval-end', (e) => {
   new Notification('Pomodoro', {
     body: notificationText,
   })
+
+  chimeSound.currentTime = 0
+  chimeSound.play()
 })
