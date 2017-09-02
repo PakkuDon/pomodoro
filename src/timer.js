@@ -37,9 +37,15 @@ export default {
     if (timeRemaining <= 0) {
       currentDurationIndex = (currentDurationIndex + 1) % durations.length
       timeRemaining = this.getDuration()
+
+      this.dispatchEvent('interval-end', {})
     }
 
     lastTick = newTick
+  },
+  getPreviousIntervalName() {
+    const index = (currentDurationIndex > 0 ? currentDurationIndex : durations.length) - 1
+    return durations[index].name
   },
   getCurrentIntervalName() {
     return durations[currentDurationIndex].name

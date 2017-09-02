@@ -37,7 +37,7 @@ startButton.addEventListener('click', () => {
 
 stopButton.addEventListener('click', () => {
   clearInterval(animationID)
-  
+
   startButton.style.display = 'inline-block'
   stopButton.style.display = 'none'
 })
@@ -58,3 +58,13 @@ const displayTimeRemaining = (timeRemaining, duration) => {
 const displayIntervalName = (name) => {
   intervalNameElem.textContent = name
 }
+
+Timer.addEventListener('interval-end', (e) => {
+  const notificationText = `
+    ${Timer.getPreviousIntervalName()} finished.
+    Starting ${Timer.getCurrentIntervalName()}
+  `
+  new Notification('Pomodoro', {
+    body: notificationText,
+  })
+})
