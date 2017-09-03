@@ -22,10 +22,37 @@ body {
 }
 
 .pomodoro {
+  position: absolute;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-flow: column;
+  perspective: 500px;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+.pomodoro .panel {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 2em;
+  backface-visibility: hidden;
+}
+
+.timer-view {
+  transform: rotateY(180deg);
+}
+
+.pomodoro.flipped {
+  transform: rotateY(180deg);
+}
+
+.settings-view input,
+.settings-view label {
+  display: block;
 }
 
 .timer {
@@ -33,6 +60,6 @@ body {
   margin: 0.5em;
 }
 
-.interval-settings {
-  margin: 0.5em;
+progress {
+  width: 100%;
 }

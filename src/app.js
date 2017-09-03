@@ -3,6 +3,7 @@ import './styles.css'
 
 import Timer from './timer'
 
+const pomodoroElement = document.querySelector('.pomodoro')
 const timerDisplay = document.querySelector('.timer')
 const timerProgress = document.querySelector('progress')
 
@@ -17,6 +18,8 @@ let animationID
 
 startButton.addEventListener('click', () => {
   clearInterval(animationID)
+
+  pomodoroElement.classList.add('flipped')
 
   let workDuration = getWorkDuration()
   let breakDuration = getBreakDuration()
@@ -33,6 +36,7 @@ startButton.addEventListener('click', () => {
 
 stopButton.addEventListener('click', () => {
   clearInterval(animationID)
+  pomodoroElement.classList.remove('flipped')
 })
 
 const getWorkDuration = () => parseInt(workDurationInput.value)
