@@ -8,24 +8,32 @@
   </head>
   <body>
     <div class="pomodoro">
-      <div class="timer">
-        0:00
+      <div class="panel settings-view">
+        <div>
+          <label for="work-duration">Work</label>
+          <input id="work-duration" type="number" value="25" placeholder="Work length" />
+        </div>
+        <div>
+          <label for="break-duration">Break</label>
+          <input id="break-duration" type="number" value="5" placeholder="Break length" />
+        </div>
+        <div>
+          <button id="start-button">Start</button>
+        </div>
       </div>
-      <div class="interval-name">
-        &nbsp;
+      <div class="panel timer-view">
+        <div class="interval-name">
+          &nbsp;
+        </div>
+        <div class="timer">
+          0:00
+        </div>
+        <progress value="0" max="0"></progress>
+        <div>
+          <button id="stop-button">Stop</button>
+        </div>
+        <audio src="chime.mp3"></audio>
       </div>
-      <div class="interval-settings">
-        Work
-        <input id="work-duration" type="number" value="25" placeholder="Work length" />
-        Break
-        <input id="break-duration" type="number" value="5" placeholder="Break length" />
-      </div>
-      <div class="actions">
-        <button id="start-button">Start</button>
-        <button id="stop-button">Stop</button>
-      </div>
-      <audio src="chime.mp3"></audio>
-      <progress value="0" max="0"></progress>
     </div>
     <script src="bundle.js"></script>
   </body>

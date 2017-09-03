@@ -15,13 +15,8 @@ const chimeSound = document.querySelector('audio')
 
 let animationID
 
-stopButton.style.display = 'none'
-
 startButton.addEventListener('click', () => {
   clearInterval(animationID)
-
-  startButton.style.display = 'none'
-  stopButton.style.display = 'inline-block'
 
   let workDuration = getWorkDuration()
   let breakDuration = getBreakDuration()
@@ -38,9 +33,6 @@ startButton.addEventListener('click', () => {
 
 stopButton.addEventListener('click', () => {
   clearInterval(animationID)
-
-  startButton.style.display = 'inline-block'
-  stopButton.style.display = 'none'
 })
 
 const getWorkDuration = () => parseInt(workDurationInput.value)
