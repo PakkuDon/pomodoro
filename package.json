@@ -7,7 +7,9 @@
   "scripts": {
     "build": "npm run copy && webpack",
     "start:dev": "npm run copy && webpack --watch",
-    "copy": "cp index.html src/chime.mp3 dist/"
+    "copy": "cp index.html src/chime.mp3 dist/",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
