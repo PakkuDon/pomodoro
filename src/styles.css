@@ -15,10 +15,35 @@ body {
 
 body {
   font-family: helvetica, arial;
-  font-size: 1.25em;
+  font-size: 1.5em;
+  color: rgba(255, 255, 255, 0.75);
   display: flex;
   justify-content: center;
   align-items: center;
+  background: linear-gradient(150deg,
+    #E55B5B,
+    #F7B555,
+    #6B8D97
+  );
+  background-size: 300%;
+  animation-name: backgroundAnimation;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in;
+  animation-duration: 50s;
+}
+
+@keyframes backgroundAnimation {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  50% {
+    background-position: 100% 100%;
+  }
+
+  0% {
+    background-position: 0% 0%;
+  }
 }
 
 .pomodoro {
