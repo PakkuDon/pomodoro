@@ -18,7 +18,11 @@
           <input id="break-duration" type="number" value="5" placeholder="Break length" />
         </div>
         <div>
-          <button id="start-button">Start</button>
+          <button class="action" id="start-button">
+            <svg width="24" height="24" viewBox="0 0 16 16" fill="#FFF">
+              <polygon points="0 0, 16 8, 0 16" />
+            </svg>
+          </button>
         </div>
       </div>
       <div class="panel timer-view">
@@ -30,7 +34,11 @@
         </div>
         <progress value="0" max="0"></progress>
         <div>
-          <button id="stop-button">Stop</button>
+          <button class="action" id="stop-button">
+            <svg width="24" height="24" viewBox="0 0 16 16" fill="#FFF">
+              <rect x="0" y="0" width="16" height="16" />
+            </svg>
+          </button>
         </div>
         <audio src="chime.mp3"></audio>
       </div>
