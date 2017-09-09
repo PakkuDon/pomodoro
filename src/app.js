@@ -3,7 +3,7 @@ import './styles.css'
 
 import Timer from './timer'
 
-const pomodoroElement = document.querySelector('.pomodoro')
+const pomodoroElement = document.querySelector('.container')
 const timerDisplay = document.querySelector('.timer')
 const timerProgress = document.querySelector('progress')
 
