@@ -16,6 +16,23 @@ const chimeSound = document.querySelector('audio')
 
 let animationID
 
+const getWorkDuration = () => parseInt(workDurationInput.value)
+const getBreakDuration = () => parseInt(breakDurationInput.value)
+
+const displayTimeRemaining = (timeRemaining, duration) => {
+  const minutes = Math.floor(timeRemaining / (60 * 1000))
+  const seconds = Math.round((timeRemaining / 1000) % 60)
+  const remainingTimeFormatted = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
+
+  timerDisplay.textContent = remainingTimeFormatted
+  timerProgress.max = duration
+  timerProgress.value = duration - timeRemaining
+}
+
+const displayIntervalName = (name) => {
+  intervalNameElem.textContent = name
+}
+
 startButton.addEventListener('click', () => {
   clearInterval(animationID)
 
@@ -38,23 +55,6 @@ stopButton.addEventListener('click', () => {
   clearInterval(animationID)
   pomodoroElement.classList.remove('flipped')
 })
-
-const getWorkDuration = () => parseInt(workDurationInput.value)
-const getBreakDuration = () => parseInt(breakDurationInput.value)
-
-const displayTimeRemaining = (timeRemaining, duration) => {
-  const minutes = Math.floor(timeRemaining / (60 * 1000))
-  const seconds = Math.round((timeRemaining / 1000) % 60)
-  const remainingTimeFormatted = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
-
-  timerDisplay.textContent = remainingTimeFormatted
-  timerProgress.max = duration
-  timerProgress.value = duration - timeRemaining
-}
-
-const displayIntervalName = (name) => {
-  intervalNameElem.textContent = name
-}
 
 Timer.addEventListener('interval-end', (e) => {
   const notificationText = `
