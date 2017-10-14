@@ -58,9 +58,10 @@ const displayIntervalName = (name) => {
 
 Timer.addEventListener('interval-end', (e) => {
   const notificationText = `
-    ${Timer.getPreviousIntervalName()} finished.
+    ${Timer.getPreviousIntervalName()} finished
     Starting ${Timer.getCurrentIntervalName()}
-  `
+  `.trim()
+
   new Notification('Pomodoro', {
     body: notificationText,
   })
