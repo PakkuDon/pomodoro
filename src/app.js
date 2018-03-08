@@ -37,6 +37,15 @@ const displayIntervalName = (name) => {
   intervalNameElem.textContent = name
 }
 
+const updatePageTitle = (timeRemaining) => {
+  if (!timeRemaining) {
+    document.title = 'Pomodoro'
+  }
+  else {
+    document.title = `${formatTime(timeRemaining)} - Pomodoro`
+  }
+}
+
 startButton.addEventListener('click', () => {
   clearInterval(animationID)
 
@@ -47,17 +56,20 @@ startButton.addEventListener('click', () => {
   Timer.start(workDuration, breakDuration)
   displayTimeRemaining(Timer.getTimeRemaing(), Timer.getDuration())
   displayIntervalName(Timer.getCurrentIntervalName())
+  updatePageTitle(Timer.getTimeRemaing())
 
   animationID = setInterval(() => {
     Timer.tick()
     displayTimeRemaining(Timer.getTimeRemaing(), Timer.getDuration())
     displayIntervalName(Timer.getCurrentIntervalName())
+    updatePageTitle(Timer.getTimeRemaing())
   }, 1000)
 })
 
 stopButton.addEventListener('click', () => {
   clearInterval(animationID)
   pomodoroElement.classList.remove('flipped')
+  updatePageTitle()
 })
 
 Timer.addEventListener('interval-end', (e) => {
