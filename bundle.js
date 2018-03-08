@@ -534,29 +534,6 @@ var chimeSound = document.querySelector('audio');
 
 var animationID = void 0;
 
-startButton.addEventListener('click', function () {
-  clearInterval(animationID);
-
-  pomodoroElement.classList.add('flipped');
-
-  var workDuration = getWorkDuration();
-  var breakDuration = getBreakDuration();
-  _timer2.default.start(workDuration, breakDuration);
-  displayTimeRemaining(_timer2.default.getTimeRemaing(), _timer2.default.getDuration());
-  displayIntervalName(_timer2.default.getCurrentIntervalName());
-
-  animationID = setInterval(function () {
-    _timer2.default.tick();
-    displayTimeRemaining(_timer2.default.getTimeRemaing(), _timer2.default.getDuration());
-    displayIntervalName(_timer2.default.getCurrentIntervalName());
-  }, 1000);
-});
-
-stopButton.addEventListener('click', function () {
-  clearInterval(animationID);
-  pomodoroElement.classList.remove('flipped');
-});
-
 var getWorkDuration = function getWorkDuration() {
   return parseInt(workDurationInput.value);
 };
@@ -564,10 +541,14 @@ var getBreakDuration = function getBreakDuration() {
   return parseInt(breakDurationInput.value);
 };
 
+var formatTime = function formatTime(milliseconds) {
+  var minutes = Math.floor(milliseconds / (60 * 1000));
+  var seconds = Math.round(milliseconds / 1000 % 60);
+  return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+};
+
 var displayTimeRemaining = function displayTimeRemaining(timeRemaining, duration) {
-  var minutes = Math.floor(timeRemaining / (60 * 1000));
-  var seconds = Math.round(timeRemaining / 1000 % 60);
-  var remainingTimeFormatted = minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+  var remainingTimeFormatted = formatTime(timeRemaining);
 
   timerDisplay.textContent = remainingTimeFormatted;
   timerProgress.max = duration;
@@ -578,8 +559,43 @@ var displayIntervalName = function displayIntervalName(name) {
   intervalNameElem.textContent = name;
 };
 
+var updatePageTitle = function updatePageTitle(timeRemaining) {
+  if (!timeRemaining) {
+    document.title = 'Pomodoro';
+  } else {
+    document.title = formatTime(timeRemaining) + ' - Pomodoro';
+  }
+};
+
+startButton.addEventListener('click', function () {
+  clearInterval(animationID);
+
+  pomodoroElement.classList.add('flipped');
+
+  var workDuration = getWorkDuration();
+  var breakDuration = getBreakDuration();
+  _timer2.default.start(workDuration, breakDuration);
+  displayTimeRemaining(_timer2.default.getTimeRemaing(), _timer2.default.getDuration());
+  displayIntervalName(_timer2.default.getCurrentIntervalName());
+  updatePageTitle(_timer2.default.getTimeRemaing());
+
+  animationID = setInterval(function () {
+    _timer2.default.tick();
+    displayTimeRemaining(_timer2.default.getTimeRemaing(), _timer2.default.getDuration());
+    displayIntervalName(_timer2.default.getCurrentIntervalName());
+    updatePageTitle(_timer2.default.getTimeRemaing());
+  }, 1000);
+});
+
+stopButton.addEventListener('click', function () {
+  clearInterval(animationID);
+  pomodoroElement.classList.remove('flipped');
+  updatePageTitle();
+});
+
 _timer2.default.addEventListener('interval-end', function (e) {
-  var notificationText = '\n    ' + _timer2.default.getPreviousIntervalName() + ' finished.\n    Starting ' + _timer2.default.getCurrentIntervalName() + '\n  ';
+  var notificationText = ('\n    ' + _timer2.default.getPreviousIntervalName() + ' finished\n    Starting ' + _timer2.default.getCurrentIntervalName() + '\n  ').trim();
+
   new Notification('Pomodoro', {
     body: notificationText
   });
