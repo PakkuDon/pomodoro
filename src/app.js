@@ -19,10 +19,14 @@ let animationID
 const getWorkDuration = () => parseInt(workDurationInput.value)
 const getBreakDuration = () => parseInt(breakDurationInput.value)
 
+const formatTime = (milliseconds) => {
+  const minutes = Math.floor(milliseconds / (60 * 1000))
+  const seconds = Math.round((milliseconds / 1000) % 60)
+  return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
+}
+
 const displayTimeRemaining = (timeRemaining, duration) => {
-  const minutes = Math.floor(timeRemaining / (60 * 1000))
-  const seconds = Math.round((timeRemaining / 1000) % 60)
-  const remainingTimeFormatted = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
+  const remainingTimeFormatted = formatTime(timeRemaining)
 
   timerDisplay.textContent = remainingTimeFormatted
   timerProgress.max = duration
