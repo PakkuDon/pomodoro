@@ -53,6 +53,9 @@ export default {
   getCurrentIntervalName() {
     return durations[currentDurationIndex].name
   },
+  getCurrentIntervalCount() {
+    return durations[currentDurationIndex].count
+  },
   getDuration() {
     return durations[currentDurationIndex].length
   },

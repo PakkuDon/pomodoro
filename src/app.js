@@ -10,6 +10,7 @@ const timerProgress = document.querySelector('progress')
 const workDurationInput = document.querySelector('#work-duration')
 const breakDurationInput = document.querySelector('#break-duration')
 const intervalNameElem = document.querySelector('.interval-name')
+const intervalCountElem = document.querySelector('.interval-count')
 const startButton = document.querySelector('#start-button')
 const stopButton = document.querySelector('#stop-button')
 const chimeSound = document.querySelector('audio')
@@ -37,6 +38,10 @@ const displayIntervalName = (name) => {
   intervalNameElem.textContent = name
 }
 
+const displayCurrentIntervalCount = (count) => {
+  intervalCountElem.textContent = `${count} ${count === 1 ? 'unit' : 'units'} completed`
+}
+
 const updatePageTitle = (timeRemaining) => {
   if (!timeRemaining) {
     document.title = 'Pomodoro'
@@ -56,12 +61,14 @@ startButton.addEventListener('click', () => {
   Timer.start(workDuration, breakDuration)
   displayTimeRemaining(Timer.getTimeRemaing(), Timer.getDuration())
   displayIntervalName(Timer.getCurrentIntervalName())
+  displayCurrentIntervalCount(Timer.getCurrentIntervalCount())
   updatePageTitle(Timer.getTimeRemaing())
 
   animationID = setInterval(() => {
     Timer.tick()
     displayTimeRemaining(Timer.getTimeRemaing(), Timer.getDuration())
     displayIntervalName(Timer.getCurrentIntervalName())
+    displayCurrentIntervalCount(Timer.getCurrentIntervalCount())
     updatePageTitle(Timer.getTimeRemaing())
   }, 1000)
 })
