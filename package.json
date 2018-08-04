@@ -5,8 +5,8 @@
   "author": "PakkuDon <pakku.pd@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "npm run copy && webpack",
-    "start:dev": "npm run copy && webpack --watch",
+    "build": "npm run copy && webpack-cli",
+    "start:dev": "npm run copy && webpack-cli --watch",
     "copy": "cp index.html src/chime.mp3 dist/",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
@@ -19,7 +19,8 @@
     "css-loader": "^0.28.4",
     "gh-pages": "^1.0.0",
     "style-loader": "^0.18.2",
-    "webpack": "^3.4.1"
+    "webpack": "^4.16.4",
+    "webpack-cli": "^3.1.0"
   },
   "dependencies": {
     "normalize.css": "^7.0.0",
