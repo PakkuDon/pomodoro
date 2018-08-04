@@ -17,8 +17,8 @@ const chimeSound = document.querySelector('audio')
 
 let animationID
 
-const getWorkDuration = () => parseInt(workDurationInput.value)
-const getBreakDuration = () => parseInt(breakDurationInput.value)
+const getWorkDuration = () => parseInt(workDurationInput.value, 10)
+const getBreakDuration = () => parseInt(breakDurationInput.value, 10)
 
 const formatTime = (milliseconds) => {
   const minutes = Math.floor(milliseconds / (60 * 1000))
@@ -45,8 +45,7 @@ const displayCurrentIntervalCount = (count) => {
 const updatePageTitle = (timeRemaining) => {
   if (!timeRemaining) {
     document.title = 'Pomodoro'
-  }
-  else {
+  } else {
     document.title = `${formatTime(timeRemaining)} - Pomodoro`
   }
 }
@@ -56,8 +55,8 @@ startButton.addEventListener('click', () => {
 
   pomodoroElement.classList.add('flipped')
 
-  let workDuration = getWorkDuration()
-  let breakDuration = getBreakDuration()
+  const workDuration = getWorkDuration()
+  const breakDuration = getBreakDuration()
   Timer.start(workDuration, breakDuration)
   displayTimeRemaining(Timer.getTimeRemaing(), Timer.getDuration())
   displayIntervalName(Timer.getCurrentIntervalName())
@@ -79,12 +78,13 @@ stopButton.addEventListener('click', () => {
   updatePageTitle()
 })
 
-Timer.addEventListener('interval-end', (e) => {
+Timer.addEventListener('interval-end', () => {
   const notificationText = `
     ${Timer.getPreviousIntervalName()} finished
     Starting ${Timer.getCurrentIntervalName()}
   `.trim()
 
+  // eslint-disable-next-line no-new
   new Notification('Pomodoro', {
     body: notificationText,
   })

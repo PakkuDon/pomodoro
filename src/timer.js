@@ -8,9 +8,9 @@ let durations = []
 let currentDurationIndex = 0
 let timeRemaining = 0
 let lastTick = Date.now()
-let eventHandlers = {}
+const eventHandlers = {}
 
-ACCEPTED_EVENTS.forEach(eventType => {
+ACCEPTED_EVENTS.forEach((eventType) => {
   eventHandlers[eventType] = []
 })
 
@@ -34,10 +34,10 @@ export default {
     timeRemaining = this.getDuration()
   },
   tick() {
-    let newTick = Date.now()
+    const newTick = Date.now()
     timeRemaining -= newTick - lastTick
     if (timeRemaining <= 0) {
-      durations[currentDurationIndex].count++
+      durations[currentDurationIndex].count += 1
       currentDurationIndex = (currentDurationIndex + 1) % durations.length
       timeRemaining = this.getDuration()
 
