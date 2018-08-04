@@ -1,4 +1,4 @@
-import 'normalize'
+import 'normalize.css/normalize.css'
 import './styles.css'
 
 import Timer from './timer'
