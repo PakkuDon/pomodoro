@@ -9,6 +9,8 @@
     "start:dev": "npm run copy && webpack-cli --watch",
     "copy": "cp index.html src/chime.mp3 dist/",
     "lint": "./script/lint.sh",
+    "prettier:list": "prettier --list-different \"src/**/*.js\"",
+    "prettier:fix": "prettier --write --list-different \"src/**/*.js\"",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
@@ -24,6 +26,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.10.0",
     "gh-pages": "^1.2.0",
+    "prettier": "^1.14.0",
     "style-loader": "^0.21.0",
     "webpack": "^4.16.4",
     "webpack-cli": "^3.1.0"
