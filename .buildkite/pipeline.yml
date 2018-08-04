@@ -1,3 +1,3 @@
 steps:
-  - label: Example step
-    command: echo "Hello world"
+  - label: ":docker: Build containers"
+    command: ./script/build_containers.sh
