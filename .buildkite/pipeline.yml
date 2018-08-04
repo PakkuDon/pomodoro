@@ -1,3 +1,6 @@
 steps:
   - label: ":docker: Build containers"
     command: ./script/build_containers.sh
+
+  - label: ":eslint: ESLint"
+    command: ./script/lint.sh
