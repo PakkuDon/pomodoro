@@ -1,8 +1,4 @@
-const ACCEPTED_EVENTS = [
-  'tick',
-  'interval-start',
-  'interval-end',
-]
+const ACCEPTED_EVENTS = ['tick', 'interval-start', 'interval-end']
 
 let durations = []
 let currentDurationIndex = 0
@@ -68,6 +64,8 @@ export default {
   },
   dispatchEvent(type, event) {
     if (!eventHandlers[type]) return
-    eventHandlers[type].forEach((handler) => { handler(event) })
+    eventHandlers[type].forEach((handler) => {
+      handler(event)
+    })
   },
 }
