@@ -8,10 +8,12 @@ class Pomodoro extends Component {
     super(props)
 
     this.state = {
-      intervalName: '',
-      timeRemaining: 0,
-      duration: 0,
-      count: 0,
+      timer: {
+        intervalName: '',
+        timeRemaining: 0,
+        duration: 0,
+        count: 0,
+      },
     }
   }
 
@@ -20,16 +22,19 @@ class Pomodoro extends Component {
     setInterval(() => {
       TimerModel.tick()
       this.setState({
-        intervalName: TimerModel.getCurrentIntervalName(),
-        timeRemaining: TimerModel.getTimeRemaing(),
-        duration: TimerModel.getDuration(),
-        count: TimerModel.getCurrentIntervalCount(),
+        timer: {
+          intervalName: TimerModel.getCurrentIntervalName(),
+          timeRemaining: TimerModel.getTimeRemaing(),
+          duration: TimerModel.getDuration(),
+          count: TimerModel.getCurrentIntervalCount(),
+        },
       })
     }, 1000)
   }
 
   render() {
-    const { intervalName, timeRemaining, duration, count } = this.state
+    const { timer } = this.state
+    const { intervalName, timeRemaining, duration, count } = timer
 
     return (
       <Fragment>
