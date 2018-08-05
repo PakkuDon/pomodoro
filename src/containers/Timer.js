@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const formatTime = (milliseconds) => {
   const minutes = Math.floor(milliseconds / (60 * 1000))
@@ -22,5 +23,12 @@ const Timer = ({ intervalName, count, timeRemaining, duration }) => (
     <audio src="chime.mp3" />
   </div>
 )
+
+Timer.propTypes = {
+  intervalName: PropTypes.string.isRequired,
+  count: PropTypes.number.isRequired,
+  timeRemaining: PropTypes.number.isRequired,
+  duration: PropTypes.number.isRequired,
+}
 
 export default Timer
