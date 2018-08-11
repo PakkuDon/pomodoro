@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import Settings from './Settings'
 import Timer from './Timer'
 import TimerModel from '../timer'
@@ -8,6 +8,7 @@ class Pomodoro extends Component {
     super(props)
 
     this.state = {
+      flipped: true,
       timer: {
         intervalName: '',
         timeRemaining: 0,
@@ -33,11 +34,11 @@ class Pomodoro extends Component {
   }
 
   render() {
-    const { timer } = this.state
+    const { flipped, timer } = this.state
     const { intervalName, timeRemaining, duration, count } = timer
 
     return (
-      <Fragment>
+      <div className={`container ${flipped ? 'flipped' : ''}`}>
         <Settings />
         <Timer
           intervalName={intervalName}
@@ -45,7 +46,7 @@ class Pomodoro extends Component {
           duration={duration}
           count={count}
         />
-      </Fragment>
+      </div>
     )
   }
 }
