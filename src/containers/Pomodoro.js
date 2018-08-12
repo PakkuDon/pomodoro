@@ -41,7 +41,10 @@ class Pomodoro extends Component {
 
   onSettingEdit(field, value) {
     this.setState({
-      settings: Object.assign(this.state.settings, { [field]: value }),
+      settings: {
+        ...this.state.settings,
+        [field]: value,
+      },
     })
   }
 
