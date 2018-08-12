@@ -9,6 +9,10 @@ class Pomodoro extends Component {
 
     this.state = {
       flipped: true,
+      settings: {
+        workLength: '25',
+        breakLength: '5',
+      },
       timer: {
         intervalName: '',
         timeRemaining: 0,
@@ -33,13 +37,24 @@ class Pomodoro extends Component {
     }, 1000)
   }
 
+  onSettingEdit(field, value) {
+    this.setState({
+      settings: Object.assign(this.state.settings, { [field]: value }),
+    })
+  }
+
   render() {
-    const { flipped, timer } = this.state
+    const { flipped, settings, timer } = this.state
+    const { workLength, breakLength } = settings
     const { intervalName, timeRemaining, duration, count } = timer
 
     return (
       <div className={`container ${flipped ? 'flipped' : ''}`}>
-        <Settings />
+        <Settings
+          workLength={workLength}
+          breakLength={breakLength}
+          onEdit={this.onSettingEdit.bind(this)}
+        />
         <Timer
           intervalName={intervalName}
           timeRemaining={timeRemaining}
