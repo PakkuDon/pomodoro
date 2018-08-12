@@ -6,11 +6,14 @@ const formatTime = (milliseconds) => {
   const seconds = Math.round((milliseconds / 1000) % 60)
   return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
 }
+const formatIntervalCount = (count) => (
+  `${count} ${count === 1 ? 'unit' : 'units'} completed`
+)
 
 const Timer = ({ intervalName, count, timeRemaining, duration }) => (
   <div className="panel timer-view">
     <div className="interval-name">{intervalName}</div>
-    <div className="interval-count">{count}</div>
+    <div className="interval-count">{formatIntervalCount(count)}</div>
     <div className="timer">{formatTime(timeRemaining)}</div>
     <progress value={duration - timeRemaining} max={duration} />
     <div>
