@@ -8,7 +8,8 @@ class Pomodoro extends Component {
     super(props)
 
     this.state = {
-      flipped: true,
+      flipped: false,
+      intervalId: '',
       settings: {
         workLength: '25',
         breakLength: '5',
@@ -20,11 +21,24 @@ class Pomodoro extends Component {
         count: 0,
       },
     }
+
+    this.onSettingEdit = this.onSettingEdit.bind(this)
+    this.onTimerStart = this.onTimerStart.bind(this)
+    this.onTimerStop = this.onTimerStop.bind(this)
   }
 
-  componentDidMount() {
-    TimerModel.start(25, 5)
-    setInterval(() => {
+  onSettingEdit(field, value) {
+    this.setState({
+      settings: Object.assign(this.state.settings, { [field]: value }),
+    })
+  }
+
+  onTimerStart() {
+    const { intervalId, settings } = this.state
+    window.clearInterval(intervalId)
+
+    TimerModel.start(settings.workLength, settings.breakLength)
+    const newIntervalId = setInterval(() => {
       TimerModel.tick()
       this.setState({
         timer: {
@@ -35,11 +49,16 @@ class Pomodoro extends Component {
         },
       })
     }, 1000)
+    this.setState({
+      flipped: true,
+      intervalId: newIntervalId,
+    })
   }
 
-  onSettingEdit(field, value) {
+  onTimerStop() {
+    window.clearInterval(this.state.intervalId)
     this.setState({
-      settings: Object.assign(this.state.settings, { [field]: value }),
+      flipped: false,
     })
   }
 
@@ -53,13 +72,15 @@ class Pomodoro extends Component {
         <Settings
           workLength={workLength}
           breakLength={breakLength}
-          onEdit={this.onSettingEdit.bind(this)}
+          onEdit={this.onSettingEdit}
+          onSubmit={this.onTimerStart}
         />
         <Timer
           intervalName={intervalName}
           timeRemaining={timeRemaining}
           duration={duration}
           count={count}
+          onStop={this.onTimerStop}
         />
       </div>
     )
