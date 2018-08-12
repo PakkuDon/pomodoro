@@ -25,6 +25,18 @@ class Pomodoro extends Component {
     this.onSettingEdit = this.onSettingEdit.bind(this)
     this.onTimerStart = this.onTimerStart.bind(this)
     this.onTimerStop = this.onTimerStop.bind(this)
+
+    TimerModel.addEventListener('interval-end', () => {
+      const notificationText = `
+        ${TimerModel.getPreviousIntervalName()} finished
+        Starting ${TimerModel.getCurrentIntervalName()}
+      `.trim()
+
+      // eslint-disable-next-line no-new
+      new Notification('Pomodoro', {
+        body: notificationText,
+      })
+    })
   }
 
   onSettingEdit(field, value) {
