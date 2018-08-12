@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const Settings = ({ onEdit, workLength, breakLength }) => {
   const onSettingEdit = (field) => ((event) => onEdit(field, event.target.value))
@@ -34,6 +35,11 @@ const Settings = ({ onEdit, workLength, breakLength }) => {
       </div>
     </div>
   )
+}
+Settings.propTypes = {
+  onEdit: PropTypes.func.isRequired,
+  workLength: PropTypes.string.isRequired,
+  breakLength: PropTypes.string.isRequired,
 }
 
 export default Settings
