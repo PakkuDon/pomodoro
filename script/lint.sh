@@ -2,4 +2,4 @@
 
 set -euo pipefail
 
-docker run --rm debian:node yarn run eslint src
+docker run --rm debian:node yarn lint
