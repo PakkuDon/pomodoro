@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import Settings from './Settings'
 import Timer from './Timer'
 import TimerModel from '../timer'
@@ -78,9 +80,15 @@ class Pomodoro extends Component {
   }
 
   render() {
-    const { flipped, settings, timer } = this.state
-    const { workLength, breakLength } = settings
-    const { intervalName, timeRemaining, duration, count } = timer
+    const {
+      flipped,
+      workLength,
+      breakLength,
+      intervalName,
+      duration,
+      count,
+      timeRemaining
+    } = this.props
 
     return (
       <div className={`container ${flipped ? 'flipped' : ''}`}>
@@ -102,4 +110,29 @@ class Pomodoro extends Component {
   }
 }
 
-export default Pomodoro
+Pomodoro.propTypes = {
+  flipped: PropTypes.bool,
+  workLength: PropTypes.string,
+  breakLength: PropTypes.string,
+  intervalName: PropTypes.string,
+  duration: PropTypes.number,
+  count: PropTypes.number,
+  timeRemaining: PropTypes.number,
+}
+
+export default connect(
+  ({ settings, timer }) => {
+    const currentInterval = timer.intervals[timer.currentIntervalIndex]
+
+    return {
+      flipped: settings.flipped,
+      workLength: settings.workLength,
+      breakLength: settings.breakLength,
+      intervalName: currentInterval.name,
+      duration: currentInterval.duration,
+      count: currentInterval.count,
+      timeRemaining: timer.timeRemaining,
+    }
+  },
+  {},
+)(Pomodoro)

@@ -5,7 +5,7 @@ export default {
     breakLength: '5',
   },
   timer: {
-    intervals: [],
+    intervals: [{}, {}],
     lastTick: Date.now(),
     timeRemaining: 0,
     currentIntervalIndex: 0,
