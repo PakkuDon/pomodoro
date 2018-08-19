@@ -8,6 +8,7 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/assets/'
   },
+  devtool: 'cheap-module-source-map',
   module: {
     rules: [
       {
