@@ -1,5 +1,9 @@
-import initialState from './initialState'
+import { combineReducers } from 'redux'
 
-export default (state = initialState, action) => {
-  return state
-}
+import settings from './settings'
+import timer from './timer'
+
+export default combineReducers({
+  settings,
+  timer,
+})
