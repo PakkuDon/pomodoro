@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Settings from './Settings'
 import Timer from './Timer'
+import { editSetting, startTimer, stopTimer, tick } from '../actions'
 import TimerModel from '../timer'
 
 class Pomodoro extends Component {
@@ -48,12 +49,20 @@ class Pomodoro extends Component {
         [field]: value,
       },
     })
+    this.props.onEditSetting(field, value)
   }
 
   onTimerStart() {
     const { intervalId, settings } = this.state
+    const {
+      breakLength,
+      onStartTimer,
+      onTick,
+      workLength,
+    } = this.props
     window.clearInterval(intervalId)
 
+    onStartTimer(workLength, breakLength)
     TimerModel.start(settings.workLength, settings.breakLength)
     const newIntervalId = setInterval(() => {
       TimerModel.tick()
@@ -65,6 +74,7 @@ class Pomodoro extends Component {
           count: TimerModel.getCurrentIntervalCount(),
         },
       })
+      onTick()
     }, 1000)
     this.setState({
       flipped: true,
@@ -77,6 +87,7 @@ class Pomodoro extends Component {
     this.setState({
       flipped: false,
     })
+    this.props.onStopTimer()
   }
 
   render() {
@@ -118,6 +129,10 @@ Pomodoro.propTypes = {
   duration: PropTypes.number,
   count: PropTypes.number,
   timeRemaining: PropTypes.number,
+  onEditSetting: PropTypes.func,
+  onStartTimer: PropTypes.func,
+  onStopTimer: PropTypes.func,
+  onTick: PropTypes.func,
 }
 
 export default connect(
@@ -134,5 +149,10 @@ export default connect(
       timeRemaining: timer.timeRemaining,
     }
   },
-  {},
+  {
+    onEditSetting: editSetting,
+    onStartTimer: startTimer,
+    onStopTimer: stopTimer,
+    onTick: tick,
+  },
 )(Pomodoro)
