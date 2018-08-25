@@ -11,18 +11,7 @@ class Pomodoro extends Component {
     super(props)
 
     this.state = {
-      flipped: false,
       intervalId: '',
-      settings: {
-        workLength: '25',
-        breakLength: '5',
-      },
-      timer: {
-        intervalName: '',
-        timeRemaining: 0,
-        duration: 0,
-        count: 0,
-      },
     }
 
     this.onSettingEdit = this.onSettingEdit.bind(this)
@@ -31,17 +20,11 @@ class Pomodoro extends Component {
   }
 
   onSettingEdit(field, value) {
-    this.setState({
-      settings: {
-        ...this.state.settings,
-        [field]: value,
-      },
-    })
     this.props.onEditSetting(field, value)
   }
 
   onTimerStart() {
-    const { intervalId, settings } = this.state
+    const { intervalId } = this.state
     const {
       breakLength,
       onStartTimer,
@@ -51,30 +34,18 @@ class Pomodoro extends Component {
     window.clearInterval(intervalId)
 
     onStartTimer(workLength, breakLength)
-    TimerModel.start(settings.workLength, settings.breakLength)
+    TimerModel.start(workLength, breakLength)
     const newIntervalId = setInterval(() => {
       TimerModel.tick()
-      this.setState({
-        timer: {
-          intervalName: TimerModel.getCurrentIntervalName(),
-          timeRemaining: TimerModel.getTimeRemaing(),
-          duration: TimerModel.getDuration(),
-          count: TimerModel.getCurrentIntervalCount(),
-        },
-      })
       onTick()
     }, 1000)
     this.setState({
-      flipped: true,
       intervalId: newIntervalId,
     })
   }
 
   onTimerStop() {
     window.clearInterval(this.state.intervalId)
-    this.setState({
-      flipped: false,
-    })
     this.props.onStopTimer()
   }
 
