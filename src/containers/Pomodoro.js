@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import Settings from './Settings'
 import Timer from './Timer'
 import { editSetting, startTimer, stopTimer, tick } from '../actions'
-import TimerModel from '../timer'
 
 class Pomodoro extends Component {
   constructor(props) {
@@ -34,9 +33,7 @@ class Pomodoro extends Component {
     window.clearInterval(intervalId)
 
     onStartTimer(workLength, breakLength)
-    TimerModel.start(workLength, breakLength)
     const newIntervalId = setInterval(() => {
-      TimerModel.tick()
       onTick()
     }, 1000)
     this.setState({
