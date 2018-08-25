@@ -3,11 +3,16 @@ import initialState from './initialState'
 
 export default (state = initialState.settings, action) => {
   switch (action.type) {
-    case ActionTypes.FLIP_PANEL:
+    case ActionTypes.START_TIMER:
       return {
         ...state,
-        flipped: !state.flipped,
+        flipped: true,
       }
+  case ActionTypes.STOP_TIMER:
+    return {
+      ...state,
+      flipped: false,
+    }
     case ActionTypes.EDIT_SETTING:
       return {
         ...state,
