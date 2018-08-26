@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import Settings from './Settings'
-import Timer from './Timer'
-import { editSetting, startTimer, stopTimer, tick } from '../actions'
+import Settings from '../Settings'
+import Timer from '../Timer'
+import { editSetting, startTimer, stopTimer, tick } from '../../actions'
 
 class Pomodoro extends Component {
   constructor(props) {
