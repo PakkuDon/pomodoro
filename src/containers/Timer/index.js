@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import ProgressBar from '../../components/ProgressBar'
+
 const formatTime = (milliseconds) => {
   const minutes = Math.floor(milliseconds / (60 * 1000))
   const seconds = Math.round((milliseconds / 1000) % 60)
@@ -15,7 +17,7 @@ const Timer = ({ intervalName, count, timeRemaining, duration, onStop }) => (
     <div className="interval-name">{intervalName}</div>
     <div className="interval-count">{formatIntervalCount(count)}</div>
     <div className="timer">{formatTime(timeRemaining)}</div>
-    <progress value={duration - timeRemaining} max={duration} />
+    <ProgressBar value={duration - timeRemaining} max={duration} />
     <div>
       <button className="action" id="stop-button" onClick={onStop}>
         <svg width="24" height="24" viewBox="0 0 16 16" fill="#FFF">
