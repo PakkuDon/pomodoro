@@ -100,7 +100,7 @@ export default connect(
       workLength: settings.workLength,
       breakLength: settings.breakLength,
       intervalName: currentInterval.name,
-      duration: currentInterval.duration,
+      duration: currentInterval.length,
       count: currentInterval.count,
       timeRemaining: timer.timeRemaining,
     }
