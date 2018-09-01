@@ -48,45 +48,8 @@ body {
   }
 }
 
-.container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-flow: column;
-  perspective: 500px;
-  transform-style: preserve-3d;
-  transition: transform 1s;
-}
-
 @media (min-width: 640px) {
   #root {
     width: 90%;
   }
-}
-
-.container .panel {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  padding: 2em;
-  backface-visibility: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.timer-view {
-  transform: rotateY(180deg);
-}
-
-.container.flipped {
-  transform: rotateY(180deg);
-}
-
-.timer {
-  font-size: 2.5em;
-  margin: 0.5em 0em;
 }

@@ -4,11 +4,13 @@ import PropTypes from 'prop-types'
 import Button from '../../components/Button'
 import Input from '../../components/Input'
 
+import styles from './styles.css'
+
 const Settings = ({ onEdit, onSubmit, workLength, breakLength }) => {
   const onSettingEdit = (field) => ((event) => onEdit(field, event.target.value))
 
   return (
-    <div className="panel settings-view">
+    <div className={styles.root}>
       <div>
         <Input
           type="number"

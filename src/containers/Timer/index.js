@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import Button from '../../components/Button'
 import ProgressBar from '../../components/ProgressBar'
 
+import styles from './styles.css'
+
 const formatTime = (milliseconds) => {
   const minutes = Math.floor(milliseconds / (60 * 1000))
   const seconds = Math.round((milliseconds / 1000) % 60)
@@ -14,10 +16,10 @@ const formatIntervalCount = (count) => (
 )
 
 const Timer = ({ intervalName, count, timeRemaining, duration, onStop }) => (
-  <div className="panel timer-view">
+  <div className={styles.root}>
     <div className="interval-name">{intervalName}</div>
     <div className="interval-count">{formatIntervalCount(count)}</div>
-    <div className="timer">{formatTime(timeRemaining)}</div>
+    <div className={styles.timeRemaining}>{formatTime(timeRemaining)}</div>
     <ProgressBar value={duration - timeRemaining} max={duration} />
     <div>
       <Button onClick={onStop}>

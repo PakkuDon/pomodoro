@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import classnames from 'classnames'
+
 import Settings from '../Settings'
 import Timer from '../Timer'
 import { editSetting, startTimer, stopTimer, tick } from '../../actions'
+
+import styles from './styles.css'
 
 class Pomodoro extends Component {
   constructor(props) {
@@ -57,8 +61,12 @@ class Pomodoro extends Component {
       timeRemaining
     } = this.props
 
+    const rootStyle = classnames(styles.root, {
+      [styles.flipped]: flipped,
+    })
+
     return (
-      <div className={`container ${flipped ? 'flipped' : ''}`}>
+      <div className={rootStyle}>
         <Settings
           workLength={workLength}
           breakLength={breakLength}

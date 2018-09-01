@@ -1,0 +1,17 @@
+.root {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 2em;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transform: rotateY(180deg);
+}
+
+.timeRemaining {
+  font-size: 2.5em;
+  margin: 0.5em 0em;
+}
