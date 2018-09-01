@@ -17,8 +17,8 @@ const formatIntervalCount = (count) => (
 
 const Timer = ({ intervalName, count, timeRemaining, duration, onStop }) => (
   <div className={styles.root}>
-    <div className="interval-name">{intervalName}</div>
-    <div className="interval-count">{formatIntervalCount(count)}</div>
+    <div>{intervalName}</div>
+    <div>{formatIntervalCount(count)}</div>
     <div className={styles.timeRemaining}>{formatTime(timeRemaining)}</div>
     <ProgressBar value={duration - timeRemaining} max={duration} />
     <div>
