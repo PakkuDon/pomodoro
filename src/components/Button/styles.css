@@ -1,0 +1,10 @@
+.root {
+  color: rgba(255, 255, 255, 0.75);
+  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.75);
+  border-radius: 100%;
+  padding: 0.75em;
+  margin: 0.5em;
+  font-weight: bold;
+  line-height: 0;
+}

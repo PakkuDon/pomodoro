@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import Button from '../../components/Button'
+
 const Settings = ({ onEdit, onSubmit, workLength, breakLength }) => {
   const onSettingEdit = (field) => ((event) => onEdit(field, event.target.value))
 
@@ -27,11 +29,11 @@ const Settings = ({ onEdit, onSubmit, workLength, breakLength }) => {
         />
       </div>
       <div>
-        <button className="action" id="start-button" onClick={onSubmit}>
+        <Button onClick={onSubmit}>
           <svg width="24" height="24" viewBox="0 0 16 16" fill="#FFF">
             <polygon points="0 0, 16 8, 0 16" />
           </svg>
-        </button>
+        </Button>
       </div>
     </div>
   )
