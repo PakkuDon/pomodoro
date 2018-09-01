@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Button from '../../components/Button'
+import Input from '../../components/Input'
 
 const Settings = ({ onEdit, onSubmit, workLength, breakLength }) => {
   const onSettingEdit = (field) => ((event) => onEdit(field, event.target.value))
@@ -9,20 +10,18 @@ const Settings = ({ onEdit, onSubmit, workLength, breakLength }) => {
   return (
     <div className="panel settings-view">
       <div>
-        <label htmlFor="work-duration">Work</label>
-        <input
-          id="work-duration"
+        <Input
           type="number"
+          label="Work"
           value={workLength}
           placeholder="Work length"
           onChange={onSettingEdit('workLength')}
         />
       </div>
       <div>
-        <label htmlFor="break-duration">Break</label>
-        <input
-          id="break-duration"
+        <Input
           type="number"
+          label="Break"
           value={breakLength}
           placeholder="Break length"
           onChange={onSettingEdit('breakLength')}
