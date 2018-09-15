@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import DocumentTitle from 'react-document-title'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 import Settings from '../Settings'
 import Timer from '../Timer'
 import { editSetting, startTimer, stopTimer, tick } from '../../actions'
+import { formatTime } from '../../utilities/timeFormatter'
 
 import styles from './styles.css'
 
@@ -67,6 +69,7 @@ class Pomodoro extends Component {
 
     return (
       <div className={rootStyle}>
+        <DocumentTitle title={`Pomodoro - ${formatTime(timeRemaining)}`} />
         <Settings
           workLength={workLength}
           breakLength={breakLength}
