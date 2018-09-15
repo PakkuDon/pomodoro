@@ -3,14 +3,10 @@ import PropTypes from 'prop-types'
 
 import Button from '../../components/Button'
 import ProgressBar from '../../components/ProgressBar'
+import { formatTime } from '../../utilities/timeFormatter'
 
 import styles from './styles.css'
 
-const formatTime = (milliseconds) => {
-  const minutes = Math.floor(milliseconds / (60 * 1000))
-  const seconds = Math.round((milliseconds / 1000) % 60)
-  return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
-}
 const formatIntervalCount = (count) => (
   `${count} ${count === 1 ? 'unit' : 'units'} completed`
 )
