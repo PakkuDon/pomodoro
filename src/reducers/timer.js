@@ -8,12 +8,12 @@ export default (state = initialState.timer, action) => {
       const intervals = [
         {
           name: 'Work',
-          length: parseInt(workLength) * 60 * 1000,
+          length: parseInt(workLength, 10) * 60 * 1000,
           count: 0,
         },
         {
           name: 'Break',
-          length: parseInt(breakLength) * 60 * 1000,
+          length: parseInt(breakLength, 10) * 60 * 1000,
           count: 0,
         },
       ]
