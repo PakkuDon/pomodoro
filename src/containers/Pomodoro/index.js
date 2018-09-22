@@ -7,7 +7,7 @@ import classnames from 'classnames'
 import Settings from '../Settings'
 import Timer from '../Timer'
 import { editSetting, startTimer, stopTimer, tick } from '../../actions'
-import { formatTime } from '../../utilities/timeFormatter'
+import formatTime from '../../utilities/timeFormatter'
 
 import styles from './styles.css'
 

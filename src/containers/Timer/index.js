@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Button from '../../components/Button'
 import ProgressBar from '../../components/ProgressBar'
-import { formatTime } from '../../utilities/timeFormatter'
+import formatTime from '../../utilities/timeFormatter'
 
 import styles from './styles.css'
 
