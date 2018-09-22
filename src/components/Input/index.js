@@ -5,6 +5,7 @@ import styles from './styles.css'
 
 const Input = ({ label, placeholder, type, value, onChange }) => (
   <div>
+    {/* eslint-disable-next-line jsx-a11y/label-has-for */}
     <label className={styles.label}>
       {label}
       <input
