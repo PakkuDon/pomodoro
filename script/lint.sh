@@ -2,4 +2,4 @@
 
 set -euo pipefail
 
-docker run --rm debian:node yarn lint
+docker run --rm pomdoro yarn lint

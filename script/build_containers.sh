@@ -2,4 +2,4 @@
 
 set -euo pipefail
 
-docker build . -t debian:node
+docker build . -t pomodoro
