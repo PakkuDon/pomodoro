@@ -6,3 +6,6 @@ steps:
 
   - label: ":eslint: ESLint"
     command: ./script/lint.sh
+
+  - label: ":npm: npm audit"
+    command: ./script/audit_packages.sh
