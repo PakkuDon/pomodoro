@@ -5,6 +5,7 @@
     "browser": true
   },
   "rules": {
+    "jsx-a11y/media-has-caption": ["off"],
     "semi": ["error", "never"],
     "react/jsx-filename-extension": ["off"],
     "react/jsx-one-expression-per-line": ["off"]
