@@ -8,11 +8,11 @@ export default (state = initialState.settings, action) => {
         ...state,
         flipped: true,
       }
-  case ActionTypes.STOP_TIMER:
-    return {
-      ...state,
-      flipped: false,
-    }
+    case ActionTypes.STOP_TIMER:
+      return {
+        ...state,
+        flipped: false,
+      }
     case ActionTypes.EDIT_SETTING:
       return {
         ...state,

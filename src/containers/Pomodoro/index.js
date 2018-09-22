@@ -30,12 +30,7 @@ class Pomodoro extends Component {
 
   onTimerStart() {
     const { intervalId } = this.state
-    const {
-      breakLength,
-      onStartTimer,
-      onTick,
-      workLength,
-    } = this.props
+    const { breakLength, onStartTimer, onTick, workLength } = this.props
     window.clearInterval(intervalId)
 
     onStartTimer(workLength, breakLength)
@@ -60,7 +55,7 @@ class Pomodoro extends Component {
       intervalName,
       duration,
       count,
-      timeRemaining
+      timeRemaining,
     } = this.props
 
     const rootStyle = classnames(styles.root, {

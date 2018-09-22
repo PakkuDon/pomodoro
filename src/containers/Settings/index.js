@@ -7,7 +7,7 @@ import Input from '../../components/Input'
 import styles from './styles.css'
 
 const Settings = ({ onEdit, onSubmit, workLength, breakLength }) => {
-  const onSettingEdit = (field) => ((event) => onEdit(field, event.target.value))
+  const onSettingEdit = (field) => (event) => onEdit(field, event.target.value)
 
   return (
     <div className={styles.root}>

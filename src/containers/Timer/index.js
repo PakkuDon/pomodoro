@@ -7,9 +7,7 @@ import formatTime from '../../utilities/timeFormatter'
 
 import styles from './styles.css'
 
-const formatIntervalCount = (count) => (
-  `${count} ${count === 1 ? 'unit' : 'units'} completed`
-)
+const formatIntervalCount = (count) => `${count} ${count === 1 ? 'unit' : 'units'} completed`
 
 const Timer = ({ intervalName, count, timeRemaining, duration, onStop }) => (
   <div className={styles.root}>

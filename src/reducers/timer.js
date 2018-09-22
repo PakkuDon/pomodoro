@@ -36,7 +36,7 @@ const timerTick = (state) => {
       lastTick: newTick,
     }
   }
-  
+
   const newIntervalIndex = (state.currentIntervalIndex + 1) % state.intervals.length
   return {
     ...state,
