@@ -102,6 +102,20 @@ Pomodoro.propTypes = {
   onTick: PropTypes.func,
 }
 
+Pomodoro.defaultProps = {
+  flipped: false,
+  workLength: '',
+  breakLength: '',
+  intervalName: '',
+  duration: 0,
+  count: 0,
+  timeRemaining: 0,
+  onEditSetting: () => {},
+  onStartTimer: () => {},
+  onStopTimer: () => {},
+  onTick: () => {},
+}
+
 export default connect(
   ({ settings, timer }) => {
     const currentInterval = timer.intervals[timer.currentIntervalIndex]
