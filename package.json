@@ -13,7 +13,7 @@
     "prettier:fix": "prettier --write --list-different \"src/**/*.js\"",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "audit": "rm package-lock.json && synp -s yarn.lock && npm audit"
+    "audit": "rm -f package-lock.json && synp -s yarn.lock && npm audit"
   },
   "husky": {
     "hooks": {
