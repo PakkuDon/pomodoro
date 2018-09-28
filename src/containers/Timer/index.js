@@ -10,6 +10,17 @@ import styles from './styles.css'
 const formatIntervalCount = (count) => `${count} ${count === 1 ? 'unit' : 'units'} completed`
 
 class Timer extends React.Component {
+  constructor(props) {
+    super(props)
+    this.audioChime = React.createRef()
+  }
+
+  componentDidUpdate(previousProps) {
+    if (this.props.intervalName !== previousProps.intervalName) {
+      this.audioChime.current.play()
+    }
+  }
+
   render() {
     const { intervalName, count, timeRemaining, duration, onStop } = this.props
 
@@ -26,7 +37,7 @@ class Timer extends React.Component {
             </svg>
           </Button>
         </div>
-        <audio src="chime.mp3" />
+        <audio ref={this.audioChime} src="chime.mp3" />
       </div>
     )
   }
