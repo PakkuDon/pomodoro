@@ -9,21 +9,21 @@ html {
 }
 
 html,
-body,
-#root {
+body {
   height: 100%;
 }
 
-#root {
+:global(#root) {
   flex: 1;
+  height: 100%;
 }
 
 @media (min-width: 640px) {
-  #root {
+  :global(#root) {
     width: 90%;
   }
 }
-
+ 
 body {
   margin: 0;
   font-family: helvetica, arial;
