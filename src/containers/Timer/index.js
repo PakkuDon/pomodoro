@@ -9,22 +9,28 @@ import styles from './styles.css'
 
 const formatIntervalCount = (count) => `${count} ${count === 1 ? 'unit' : 'units'} completed`
 
-const Timer = ({ intervalName, count, timeRemaining, duration, onStop }) => (
-  <div className={styles.root}>
-    <div>{intervalName}</div>
-    <div>{formatIntervalCount(count)}</div>
-    <div className={styles.timeRemaining}>{formatTime(timeRemaining)}</div>
-    <ProgressBar value={duration - timeRemaining} max={duration} />
-    <div>
-      <Button onClick={onStop}>
-        <svg width="24" height="24" viewBox="0 0 16 16" fill="#FFF">
-          <rect x="0" y="0" width="16" height="16" />
-        </svg>
-      </Button>
-    </div>
-    <audio src="chime.mp3" />
-  </div>
-)
+class Timer extends React.Component {
+  render() {
+    const { intervalName, count, timeRemaining, duration, onStop } = this.props
+
+    return (
+      <div className={styles.root}>
+        <div>{intervalName}</div>
+        <div>{formatIntervalCount(count)}</div>
+        <div className={styles.timeRemaining}>{formatTime(timeRemaining)}</div>
+        <ProgressBar value={duration - timeRemaining} max={duration} />
+        <div>
+          <Button onClick={onStop}>
+            <svg width="24" height="24" viewBox="0 0 16 16" fill="#FFF">
+              <rect x="0" y="0" width="16" height="16" />
+            </svg>
+          </Button>
+        </div>
+        <audio src="chime.mp3" />
+      </div>
+    )
+  }
+}
 
 Timer.propTypes = {
   intervalName: PropTypes.string.isRequired,
