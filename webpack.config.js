@@ -1,3 +1,4 @@
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 var path = require('path')
 
 module.exports = {
@@ -6,7 +7,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/assets/'
+    publicPath: '/assets/',
   },
   devtool: 'cheap-module-source-map',
   module: {
@@ -16,25 +17,30 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader'
-          }
-        ]
+            loader: 'babel-loader',
+          },
+        ],
       },
       {
         test: /\.css$/,
         use: [
           {
-            loader: 'style-loader'
+            loader: 'style-loader',
           },
           {
             loader: 'css-loader',
             options: {
               modules: true,
-              localIdentName: '[local]_[hash:base64:5]'
-            }
-          }
-        ]
-      }
-    ]
-  }
+              localIdentName: '[local]_[hash:base64:5]',
+            },
+          },
+        ],
+      },
+    ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'index.html',
+    }),
+  ],
 }
