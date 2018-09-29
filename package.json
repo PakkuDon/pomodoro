@@ -5,9 +5,8 @@
   "author": "PakkuDon <pakku.pd@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "npm run copy && webpack-cli",
-    "start:dev": "npm run copy && webpack-cli --watch",
-    "copy": "cp src/chime.mp3 dist/",
+    "build": "webpack-cli",
+    "start:dev": "webpack-cli --watch",
     "lint": "eslint src",
     "prettier:list": "prettier --list-different \"src/**/*.js\"",
     "prettier:fix": "prettier --write --list-different \"src/**/*.js\"",
