@@ -7,7 +7,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/assets/',
+    publicPath: '/asset/',
   },
   devtool: 'cheap-module-source-map',
   module: {
@@ -33,6 +33,14 @@ module.exports = {
               modules: true,
               localIdentName: '[local]_[hash:base64:5]',
             },
+          },
+        ],
+      },
+      {
+        test: /\.mp3$/,
+        use: [
+          {
+            loader: 'file-loader',
           },
         ],
       },

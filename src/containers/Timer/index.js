@@ -6,6 +6,7 @@ import ProgressBar from '../../components/ProgressBar'
 import formatTime from '../../utilities/timeFormatter'
 
 import styles from './styles.css'
+import chimeSfx from '../../chime.mp3'
 
 const formatIntervalCount = (count) => `${count} ${count === 1 ? 'unit' : 'units'} completed`
 
@@ -37,7 +38,7 @@ class Timer extends React.Component {
             </svg>
           </Button>
         </div>
-        <audio ref={this.audioChime} src="chime.mp3" />
+        <audio ref={this.audioChime} src={chimeSfx} />
       </div>
     )
   }
