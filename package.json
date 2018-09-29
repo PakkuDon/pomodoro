@@ -7,7 +7,7 @@
   "scripts": {
     "build": "npm run copy && webpack-cli",
     "start:dev": "npm run copy && webpack-cli --watch",
-    "copy": "cp index.html src/chime.mp3 dist/",
+    "copy": "cp src/chime.mp3 dist/",
     "lint": "eslint src",
     "prettier:list": "prettier --list-different \"src/**/*.js\"",
     "prettier:fix": "prettier --write --list-different \"src/**/*.js\"",
