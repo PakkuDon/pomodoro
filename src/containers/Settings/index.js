@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import Button from '../../components/Button'
 import Input from '../../components/Input'
+import Label from '../../components/Label'
 
 import styles from './styles.css'
 
@@ -12,7 +13,9 @@ const Settings = ({ onEdit, onSubmit, workLength, breakLength }) => {
   return (
     <div className={styles.root}>
       <div>
+        <Label htmlFor="session-length">Work</Label>
         <Input
+          id="session-length"
           type="number"
           value={workLength}
           placeholder="Work length"
@@ -20,7 +23,9 @@ const Settings = ({ onEdit, onSubmit, workLength, breakLength }) => {
         />
       </div>
       <div>
+        <Label htmlFor="break-length">Break</Label>
         <Input
+          id="break-length"
           type="number"
           value={breakLength}
           placeholder="Break length"
