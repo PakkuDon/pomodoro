@@ -14,7 +14,6 @@ const Settings = ({ onEdit, onSubmit, workLength, breakLength }) => {
       <div>
         <Input
           type="number"
-          label="Work"
           value={workLength}
           placeholder="Work length"
           onChange={onSettingEdit('workLength')}
@@ -23,7 +22,6 @@ const Settings = ({ onEdit, onSubmit, workLength, breakLength }) => {
       <div>
         <Input
           type="number"
-          label="Break"
           value={breakLength}
           placeholder="Break length"
           onChange={onSettingEdit('breakLength')}

@@ -1,15 +1,11 @@
-.input,
-.label {
-  display: block;
-  margin: 0.5em 0;
-  max-width: 100%;
-}
-
-.input {
+.root {
   background: transparent;
   color: rgba(255, 255, 255, 0.75);
   border: none;
   border-bottom: 1.5px solid rgba(255, 255, 255, 0.75);
   padding: 0.5em;
   width: 100%;
+  display: block;
+  margin: 0.5em 0;
+  max-width: 100%;
 }
