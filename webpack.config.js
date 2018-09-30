@@ -50,4 +50,7 @@ module.exports = {
       template: 'index.html',
     }),
   ],
+  devServer: {
+    contentBase: path.resolve(__dirname, 'dist'),
+  },
 }
