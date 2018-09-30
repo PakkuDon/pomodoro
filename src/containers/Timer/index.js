@@ -38,7 +38,7 @@ class Timer extends React.Component {
             </svg>
           </Button>
         </div>
-        <audio ref={this.audioChime} src={chimeSfx} />
+        <audio id="beep" ref={this.audioChime} src={chimeSfx} />
       </div>
     )
   }

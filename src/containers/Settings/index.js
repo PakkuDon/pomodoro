@@ -13,7 +13,9 @@ const Settings = ({ onEdit, onSubmit, workLength, breakLength }) => {
   return (
     <div className={styles.root}>
       <div>
-        <Label htmlFor="session-length">Work</Label>
+        <Label id="session-label" htmlFor="session-length">
+          Work
+        </Label>
         <Input
           id="session-length"
           type="number"
@@ -23,7 +25,9 @@ const Settings = ({ onEdit, onSubmit, workLength, breakLength }) => {
         />
       </div>
       <div>
-        <Label htmlFor="break-length">Break</Label>
+        <Label id="break-label" htmlFor="break-length">
+          Break
+        </Label>
         <Input
           id="break-length"
           type="number"
