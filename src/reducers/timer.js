@@ -37,9 +37,13 @@ const timerTick = (state) => {
     }
   }
 
+  const updatedIntervals = state.intervals.slice()
+  updatedIntervals[state.currentIntervalIndex].count += 1
   const newIntervalIndex = (state.currentIntervalIndex + 1) % state.intervals.length
+
   return {
     ...state,
+    intervals: updatedIntervals,
     currentIntervalIndex: newIntervalIndex,
     timeRemaining: state.intervals[newIntervalIndex].length,
     lastTick: newTick,
